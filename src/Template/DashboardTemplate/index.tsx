@@ -93,13 +93,16 @@ function DashboardTemplate() {
                     },
                     body: JSON.stringify({
                         name: formValues.name,
-                        is_active: formValues.is_active, // Include the status here
+                        is_active: formValues.is_active,
                     }),
                 });
             }
             showNotification('Category created/updated successfully');
             fetchData();
-            handleCancel();
+
+            setFormValues({ name: '', is_active: true });
+
+            setIsModalOpen(false);
         } catch (e) {
             if (e instanceof Error) {
                 showNotification(e.message);

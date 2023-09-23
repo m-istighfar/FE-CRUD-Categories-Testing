@@ -1,6 +1,6 @@
 import { DashboardTemplateModular } from '../Template';
 
-const DashboardPage = () => {
+const DashboardPage2 = () => {
     return (
         <div className='flex flex-row gap-4 w-full'>
             <DashboardTemplateModular />
@@ -8,4 +8,4 @@ const DashboardPage = () => {
     );
 };
 
-export default DashboardPage;
+export default DashboardPage2;
