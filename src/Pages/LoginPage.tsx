@@ -1,4 +1,4 @@
-import { LoginTemplate } from "../Template";
+import { LoginTemplate } from '../Template';
 
 const LoginPage: React.FC = () => <LoginTemplate />;
 

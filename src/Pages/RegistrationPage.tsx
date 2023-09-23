@@ -1,4 +1,4 @@
-import { RegistrationTemplate } from "../Template";
+import { RegistrationTemplate } from '../Template';
 
 const RegistrationPage: React.FC = () => <RegistrationTemplate />;
 
