@@ -13,21 +13,23 @@
 - **Unit Test:** \
    a. Verify that the page title "Sign in to your account" is correctly rendered.\
    b. Confirm that the logo is correctly rendered using `getByAltText('logo')`.\
+   c. Ensure that the form can be submitted, and the token is correctly set in localStorage.
 
    ![1](./src/assets/images/1.png)
 
-   c. Ensure that the labels "Your email" and "Password" are rendered correctly.\
-   d. Validate that the "Sign in" button is rendered and working correctly, confirming form submission.\
-   e. Ensure no unit tests fail.
+   d. Ensure that the labels "Your email" and "Password" are rendered correctly.\
+   e. Validate that the "Sign in" button is rendered and working correctly, confirming form submission.\
+   f. Ensure no unit tests fail.
 
    ![2](./src/assets/images/2.png)
 
 ### 2. Register Page
 
-- **Rendering:** Confirm that the register page is displayed accurately.
+- **Rendering:** Ensure that the register page is rendered correctly.
 - **Unit Test:** \
    a. Verify that the page title "Create your account" is correctly rendered.\
    b. Confirm that the logo is correctly rendered.\
+   c. Ensure that the registration form can be submitted, the new user is created, and navigation to the login page  occurs.
 
    ![3](./src/assets/images/3.png)
    
@@ -39,7 +41,7 @@
 
 ### 3. Category Page
 
-- **Rendering:** Make sure the category page renders as expected.
+- **Rendering:** Ensure that the category page is rendered correctly.
 - **Unit Test:** \
    a. Ascertain no unit tests fail.\
    b. Ensure unit tests can detect the table, validating the rendering of table headers and checking the data populated in the table.\
@@ -61,3 +63,16 @@
    d. Ensure no unit tests fail.
 
    ![7](./src/assets/images/7.png)
+
+### 5. Dashboard Page
+
+- **Rendering:** Ensure that the Dashboard page is rendered correctly
+- **Unit Test:** \
+   a. Ensure the initial data is loaded, displaying the loading state and categories.\
+   b. Verify that a new category can be created, the input field is editable, and the new category is displayed upon confirmation.\
+   c. Confirm that an existing category can be edited and updated successfully, displaying the updated category name.\
+   d. Validate that a category can be deleted, and it is removed from the displayed list.\
+   e. Ensure no unit tests fail.
+
+   ![8](./src/assets/images/8.png)
+
