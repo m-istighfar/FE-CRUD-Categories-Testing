@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import ProfilePage from './ProfilePage';
 
 const localStorageMock = {
@@ -18,15 +18,14 @@ describe('ProfilePage', () => {
     it('should render profile data on successful fetch', async () => {
         localStorageMock.getItem.mockReturnValue('mock-token');
 
-        const { getByText } = render(<ProfilePage />);
+        render(<ProfilePage />);
 
-        expect(getByText('Profile Page')).toBeDefined();
+        expect(screen.getByText('Profile Page')).toBeDefined();
 
         await waitFor(() => {
-            expect(getByText('Profile Page')).toBeDefined();
-            expect(getByText('ID: 1')).toBeDefined();
-            expect(getByText('Name: John')).toBeDefined();
-            expect(getByText('Email: john@example.com')).toBeDefined();
+            expect(screen.getByText('ID: 1')).toBeDefined();
+            expect(screen.getByText('Name: John')).toBeDefined();
+            expect(screen.getByText('Email: john@example.com')).toBeDefined();
         });
     });
 });

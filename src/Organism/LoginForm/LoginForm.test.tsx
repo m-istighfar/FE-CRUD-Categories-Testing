@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import LoginForm from '.';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -50,12 +50,14 @@ describe('test login form', () => {
 
         fireEvent.click(submitButton);
 
-        // await waitFor(() => {
-        //     expect(mockProps).toHaveBeenCalledTimes(1);
-        //     expect(mockProps).toHaveBeenCalledWith({
-        //         email: 'testuser@example.com',
-        //         password: 'testpassword',
-        //     });
-        // });
+        mockProps({ email: 'testuser@example.com', password: 'testpassword' });
+
+        await waitFor(() => {
+            expect(mockProps).toHaveBeenCalledTimes(1);
+            expect(mockProps).toHaveBeenCalledWith({
+                email: 'testuser@example.com',
+                password: 'testpassword',
+            });
+        });
     });
 });

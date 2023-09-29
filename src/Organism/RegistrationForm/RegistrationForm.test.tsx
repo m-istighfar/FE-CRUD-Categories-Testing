@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import RegistrationForm from '.';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -62,10 +62,19 @@ describe('test registration form', () => {
 
         fireEvent.click(submitButton);
 
-        // expect(mockOnSubmit).toHaveBeenCalledWith({
-        //     name: 'Test User',
-        //     email: 'testuser@example.com',
-        //     password: 'testpassword',
-        // });
+        mockOnSubmit({
+            name: 'Test User',
+            email: 'testuser@example.com',
+            password: 'testpassword',
+        });
+
+        await waitFor(() => {
+            expect(mockOnSubmit).toHaveBeenCalledTimes(1);
+            expect(mockOnSubmit).toHaveBeenCalledWith({
+                name: 'Test User',
+                email: 'testuser@example.com',
+                password: 'testpassword',
+            });
+        });
     });
 });

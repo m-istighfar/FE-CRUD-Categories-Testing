@@ -47,10 +47,17 @@ describe('CategoryModal Test', () => {
 
             await waitFor(() => {
                 expect(mockHandleOk).toHaveBeenCalledTimes(1);
-                // expect(mockSetFormValues).toHaveBeenCalledWith({
-                //     name: 'Sample Category',
-                //     is_active: false,
-                // });
+
+                nameInput.value = '';
+
+                fireEvent.click(okButton);
+            });
+
+            await waitFor(() => {
+                expect(mockSetFormValues).toHaveBeenCalledWith({
+                    name: '',
+                    is_active: false,
+                });
             });
         });
 
