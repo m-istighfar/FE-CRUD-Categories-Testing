@@ -3,10 +3,6 @@ import LoginTemplate from '.';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 describe('LoginTemplate', () => {
-    afterEach(() => {
-        jest.clearAllMocks();
-    });
-
     test('renders the title correctly', () => {
         render(
             <Router>
