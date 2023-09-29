@@ -5,16 +5,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 describe('test login form', () => {
     const mockProps = jest.fn();
 
-    // test('title render correctly', async () => {
-    //     render(
-    //         <Router>
-    //             <LoginForm onSubmit={mockProps} />
-    //         </Router>,
-    //     );
-    //     const title = screen.getByText('Login Page');
-    //     expect(title).toBeDefined();
-    // });
-
     test('label email render correctly', async () => {
         render(
             <Router>
