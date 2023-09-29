@@ -1,10 +1,6 @@
 import { LoginForm } from '../../Organism';
-import jwt_decode from 'jwt-decode';
-import useTheme from '../../context/useTheme';
+
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/useAuth';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 
 interface LoginFormProps {
     email: string;
@@ -18,16 +14,9 @@ interface LoginResponse {
     errors?: string;
 }
 
-interface DecodedToken {
-    id: string;
-}
-
 const LoginTemplate: React.FC = () => {
-    const { theme, toggleTheme } = useTheme();
     const [error, setError] = useState<string | null>(null);
-    const { setAuthToken } = useAuth();
 
-    const navigate = useNavigate();
     const onSubmit = async (data: LoginFormProps) => {
         try {
             const fetching = await fetch('https://mock-api.arikmpt.com/api/user/login', {
@@ -46,11 +35,8 @@ const LoginTemplate: React.FC = () => {
                     setError('An error occurred during login.');
                 }
             } else if (response.data && response.data.token) {
-                setAuthToken(response.data.token);
-                const decoded: DecodedToken = jwt_decode(response.data.token);
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('id', decoded.id);
-                navigate('/dashboard');
+                window.location.replace('/dashboard');
             }
         } catch (error) {
             setError('An error occurred during login.');
@@ -58,28 +44,9 @@ const LoginTemplate: React.FC = () => {
     };
 
     return (
-        <section className={theme === 'light' ? 'bg-gray-50' : 'dark:bg-gray-900'}>
-            <div className='absolute top-4 right-4'>
-                <button
-                    className={`${
-                        theme === 'light' ? 'bg-gray-700' : 'bg-gray-200'
-                    } px-4 py-2 rounded`}
-                    onClick={toggleTheme}
-                >
-                    {theme === 'light' ? (
-                        <MoonIcon className='w-6 h-6 text-white' />
-                    ) : (
-                        <SunIcon className='w-6 h-6 text-gray-900' />
-                    )}
-                </button>
-            </div>
+        <section className='bg-gray-50'>
             <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
-                <a
-                    href='#'
-                    className={`flex items-center mb-6 text-2xl font-semibold ${
-                        theme === 'light' ? 'text-gray-900' : 'dark:text-white'
-                    }`}
-                >
+                <a href='#' className='flex items-center mb-6 text-2xl font-semibold text-gray-900'>
                     <img
                         className='w-8 h-8 mr-2'
                         src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg'

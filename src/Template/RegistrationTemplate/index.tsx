@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { RegistrationForm } from '../../Organism';
-import useTheme from '../../context/useTheme';
 import { useState } from 'react';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 interface RegistrationFormProps {
     name: string;
@@ -24,7 +22,6 @@ interface RegistrationResponse {
 
 const RegistrationTemplate: React.FC = () => {
     const navigate = useNavigate();
-    const { theme, toggleTheme } = useTheme();
     const [error, setError] = useState<string | null>(null);
 
     const onSubmit = async (data: RegistrationFormProps) => {
@@ -50,27 +47,11 @@ const RegistrationTemplate: React.FC = () => {
     };
 
     return (
-        <section className={theme === 'light' ? 'bg-gray-50' : 'dark:bg-gray-900'}>
-            <div className='absolute top-4 right-4'>
-                <button
-                    className={`${
-                        theme === 'light' ? 'bg-gray-700' : 'bg-gray-200'
-                    } px-4 py-2 rounded`}
-                    onClick={toggleTheme}
-                >
-                    {theme === 'light' ? (
-                        <MoonIcon className='w-6 h-6 text-white' />
-                    ) : (
-                        <SunIcon className='w-6 h-6 text-gray-900' />
-                    )}
-                </button>
-            </div>
+        <section className='bg-gray-50 dark:bg-gray-900'>
             <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
                 <a
                     href='#'
-                    className={`flex items-center mb-6 text-2xl font-semibold ${
-                        theme === 'light' ? 'text-gray-900' : 'dark:text-white'
-                    }`}
+                    className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white'
                 >
                     <img
                         className='w-8 h-8 mr-2'

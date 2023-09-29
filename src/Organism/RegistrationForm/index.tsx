@@ -3,7 +3,6 @@ import { Button } from '../../Atoms';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './registerFormSchema';
 import { Link } from 'react-router-dom';
-import useTheme from '../../context/useTheme';
 
 interface RegistrationFormProps {
     name: string;
@@ -16,7 +15,6 @@ interface Props {
 }
 
 const RegistrationForm = ({ onSubmit }: Props) => {
-    const { theme } = useTheme();
     const handleSubmit = (values: RegistrationFormProps) => {
         onSubmit(values);
     };
@@ -74,18 +72,9 @@ const RegistrationForm = ({ onSubmit }: Props) => {
             >
                 Register
             </Button>
-            <p
-                className={`text-sm font-light ${
-                    theme === 'light' ? 'text-gray-500' : 'dark:text-gray-400'
-                }`}
-            >
-                Already have an account ?{' '}
-                <Link
-                    to='/login'
-                    className={`font-medium text-primary-600 hover:underline ${
-                        theme === 'light' ? '' : 'dark:text-primary-500'
-                    }`}
-                >
+            <p className='text-sm font-light'>
+                Already have an account?{' '}
+                <Link to='/login' className='font-medium text-primary-600 hover:underline'>
                     Sign In
                 </Link>
             </p>

@@ -3,7 +3,6 @@ import { FormField } from '../../Moleluces';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './loginFormSchema';
 import { Link } from 'react-router-dom';
-import useTheme from '../../context/useTheme';
 
 interface LoginFormProps {
     email: string;
@@ -15,19 +14,18 @@ interface Props {
 }
 
 const LoginForm = ({ onSubmit }: Props) => {
-    const { theme } = useTheme();
     const handleSubmit = (values: LoginFormProps) => {
         onSubmit(values);
     };
 
-    const formMik = useFormik({
+    const formik = useFormik({
         initialValues: initialValues,
         onSubmit: handleSubmit,
         validationSchema: validationSchema,
     });
 
     return (
-        <form className='space-y-4 md:space-y-6' onSubmit={formMik.handleSubmit}>
+        <form className='space-y-4 md:space-y-6' onSubmit={formik.handleSubmit}>
             <div>
                 <FormField
                     type='email'
@@ -35,11 +33,11 @@ const LoginForm = ({ onSubmit }: Props) => {
                     id='email'
                     placeholder='name@company.com'
                     label='Your email'
-                    value={formMik.values.email}
-                    onChange={formMik.handleChange('email')}
-                    status={formMik.errors.email && 'error'}
+                    value={formik.values.email}
+                    onChange={formik.handleChange('email')}
+                    status={formik.errors.email && 'error'}
                 />
-                {formMik.errors.email && <p>{formMik.errors.email}</p>}
+                {formik.errors.email && <p>{formik.errors.email}</p>}
             </div>
             <div>
                 <FormField
@@ -48,11 +46,11 @@ const LoginForm = ({ onSubmit }: Props) => {
                     id='password'
                     placeholder='••••••••'
                     label='Password'
-                    value={formMik.values.password}
-                    onChange={formMik.handleChange('password')}
-                    status={formMik.errors.password && 'error'}
+                    value={formik.values.password}
+                    onChange={formik.handleChange('password')}
+                    status={formik.errors.password && 'error'}
                 />
-                {formMik.errors.password && <p>{formMik.errors.password}</p>}
+                {formik.errors.password && <p>{formik.errors.password}</p>}
             </div>
             <div className='flex items-center justify-between'>
                 <div className='flex items-start'>
@@ -69,37 +67,19 @@ const LoginForm = ({ onSubmit }: Props) => {
                         </Label>
                     </div>
                 </div>
-                <a
-                    href='#'
-                    className={`text-sm font-medium text-primary-600 hover:underline ${
-                        theme === 'light' ? '' : 'dark:text-primary-500'
-                    }`}
-                >
+                <a href='#' className={`text-sm font-medium text-primary-600 hover:underline`}>
                     Forgot password?
                 </a>
             </div>
             <Button
                 type={'submit'}
-                className={`w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ${
-                    theme === 'light'
-                        ? ''
-                        : 'dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-                }`}
+                className={`w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center`}
             >
                 Sign in
             </Button>
-            <p
-                className={`text-sm font-light ${
-                    theme === 'light' ? 'text-gray-500' : 'dark:text-gray-400'
-                }`}
-            >
+            <p className={`text-sm font-light text-gray-500`}>
                 Don’t have an account yet?{' '}
-                <Link
-                    to='/register'
-                    className={`font-medium text-primary-600 hover:underline ${
-                        theme === 'light' ? '' : 'dark:text-primary-500'
-                    }`}
-                >
+                <Link to='/register' className={`font-medium text-primary-600 hover:underline`}>
                     Register
                 </Link>
             </p>

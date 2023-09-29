@@ -1,9 +1,9 @@
 import LoginPage from './Pages/LoginPage';
 import RegistrationPage from './Pages/RegistrationPage';
-import DashboardPage from './Pages/DashboardPage';
 import HomePage from './Pages/HomePage';
 import ErrorPage from './Pages/ErrorPage';
 import DashboardPage2 from './Pages/DashboardPage2';
+import ProfilePage from './Pages/ProfilePage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { PublicLayout } from './Template';
 import ThemeProvider from './context/ThemeProvider';
@@ -17,12 +17,9 @@ function App() {
         {
             element: <PublicLayout />,
             children: [
+                {},
                 {
                     path: '/dashboard',
-                    element: <DashboardPage />,
-                },
-                {
-                    path: '/dashboard2',
                     element: <DashboardPage2 />,
                 },
             ],
@@ -35,6 +32,10 @@ function App() {
         {
             path: '/register',
             element: <RegistrationPage />,
+        },
+        {
+            path: '/profile',
+            element: <ProfilePage />,
         },
         {
             path: '*',
