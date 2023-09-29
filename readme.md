@@ -17,9 +17,9 @@
    ![1](./src/assets/images/1.png)
 
    c. Ensure that the labels "Your email" and "Password" are rendered correctly.\
-   d. Validate that the "Sign in" button is rendered and working correctly, confirming form submission.
+   d. Validate that the "Sign in" button is rendered and working correctly, confirming form submission.\
    e. Ensure no unit tests fail.
-   
+
    ![2](./src/assets/images/2.png)
 
 ### 2. Register Page
