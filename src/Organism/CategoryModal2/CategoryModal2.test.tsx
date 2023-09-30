@@ -23,7 +23,6 @@ describe('CategoryModal Test', () => {
 
     describe('Create Category', () => {
         beforeEach(() => {
-            jest.clearAllMocks();
             render(<CategoryModal {...mockProps} />);
         });
 

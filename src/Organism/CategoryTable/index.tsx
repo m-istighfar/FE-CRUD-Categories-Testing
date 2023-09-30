@@ -53,6 +53,7 @@ const CategoryTable: React.FC<CategoryTableProps> = ({
                             </td>
                             <td className='px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm font-medium '>
                                 <button
+                                    aria-label={`Edit ${record.name}`}
                                     onClick={() => handleEdit(record)}
                                     className='text-blue-600 hover:text-blue-900 mr-4'
                                 >
@@ -61,6 +62,7 @@ const CategoryTable: React.FC<CategoryTableProps> = ({
                                 <button
                                     onClick={() => handleDelete(record.id)}
                                     className='text-red-600 hover:text-red-900'
+                                    aria-label={`Delete ${record.name}`}
                                 >
                                     <TrashIcon className='h-5 w-5' />
                                 </button>
