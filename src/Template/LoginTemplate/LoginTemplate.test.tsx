@@ -5,6 +5,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 global.fetch = jest.fn().mockResolvedValue({
     json: async () => ({ data: { token: 'mockedToken' } }),
 });
+const replaceMock = jest.fn();
+Object.defineProperty(window, 'location', {
+    value: {
+        replace: replaceMock,
+    },
+    writable: true,
+});
 
 describe('LoginTemplate', () => {
     test('renders the title correctly', () => {
